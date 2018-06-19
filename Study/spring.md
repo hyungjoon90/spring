@@ -38,7 +38,12 @@
       5. ModelAndView 정보를 바탕으로 ViewResolver에게 View를 요청
 
       6. View는 결과정보를 사용하여 화면을 표현함
+      
+      
 
 ![spring_mvc](https://user-images.githubusercontent.com/34940800/41592127-a2e58188-73f6-11e8-935f-0162778b044c.png)
+
+
+
 
 출처: http://gap85.tistory.com/entry/Spring-Spring-mvc [Joo studio]
