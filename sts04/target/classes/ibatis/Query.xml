@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap>
+
+	<select id="selectAll" resultClass="com.bit.myapp04.model.entity.GuestVo">
+		select * from guest order by sabun desc
+	</select>
+	
+	<insert id="insertOne" parameterClass="com.bit.myapp04.model.entity.GuestVo">
+		insert into guest values(#sabun#,#name#,sysdate,#pay#)
+	</insert>
+	
+	<update id="updateOne" parameterClass="com.bit.myapp04.model.entity.GuestVo">
+		update guest set name=#name#,pay=#pay# where sabun=#sabun#
+	</update>
+	
+	<delete id="deleteOne" parameterClass="java.lang.Integer">
+		delete from guest where sabun=#value#
+	</delete>
+</sqlMap>
