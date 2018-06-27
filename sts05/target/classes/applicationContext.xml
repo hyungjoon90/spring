@@ -23,5 +23,26 @@
 		<property name="username" value="scott"/>
 		<property name="password" value="tiger"/>
 	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/sqlMapConfig.xml"></property>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+	
+	<!-- 
+	<bean id="guestDao" class="com.bit.myapp05.model.GuestDaoImpl01">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>  
+	-->
 
+	<!-- 
+	<bean id="guestService" class="com.bit.myapp05.service.GuestService">
+		<property name="guestDao" ref="guestDao"/>
+	</bean> 
+	-->
+	
 </beans>

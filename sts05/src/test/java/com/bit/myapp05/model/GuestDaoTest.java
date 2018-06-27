@@ -2,6 +2,8 @@ package com.bit.myapp05.model;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -31,10 +33,16 @@ public class GuestDaoTest {
 	}
 
 	@Test
-	public void testDataSource() {
+	public void testDataSource() throws SQLException {
 		Resource resource=new ClassPathResource("applicationContext.xml");
 		BeanFactory factory = new XmlBeanFactory(resource);
-		assertNotNull(factory.getBean("dataSource"));
+		
+		GuestDao guestDao=(GuestDao) factory.getBean("guestDao");
+		assertNotNull(guestDao);
+		
+		assertNotNull(guestDao.selectAll());
+		assertTrue(guestDao.selectAll().size()>0);
+		
 	}
 
 	

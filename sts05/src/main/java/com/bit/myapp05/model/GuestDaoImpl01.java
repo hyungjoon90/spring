@@ -3,17 +3,26 @@ package com.bit.myapp05.model;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.bit.myapp05.model.entity.GuestVo;
+import com.bit.myapp05.service.GuestService;
 
-@Component
+@Repository
 public class GuestDaoImpl01 implements GuestDao {
+	
+	@Autowired
+	SqlSession sqlSession;
 
 	@Override
 	public List<GuestVo> selectAll() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("guest.selectAll");
 	}
 
 	@Override
@@ -24,20 +33,25 @@ public class GuestDaoImpl01 implements GuestDao {
 
 	@Override
 	public int insertOne(GuestVo bean) throws SQLException {
-		// TODO Auto-generated method stub
+		sqlSession.insert("guest.insertOne",bean);
 		return 0;
 	}
 
 	@Override
 	public int updateOne(GuestVo bean) throws SQLException {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("guest.updateOne",bean);
 	}
 
 	@Override
 	public int deleteOne(int sabun) throws SQLException {
+		return sqlSession.delete("guest.deleteOne",sabun);
+	}
+
+	@Override
+	public int selectTotal() throws SQLException {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne("guest.total");
 	}
 
 }

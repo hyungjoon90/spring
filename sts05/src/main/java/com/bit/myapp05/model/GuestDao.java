@@ -12,4 +12,5 @@ public interface GuestDao {
 	int insertOne(GuestVo bean) throws SQLException;
 	int updateOne(GuestVo bean) throws SQLException;
 	int deleteOne(int sabun) throws SQLException;
+	int selectTotal() throws SQLException;
 }
